@@ -20,6 +20,7 @@ requirements:
     - python
     - flake8
     - pytest-runner
+    - wheel
   run:
     - jinja2 >=2.0
     - python
