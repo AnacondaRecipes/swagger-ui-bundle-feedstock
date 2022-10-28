@@ -32,10 +32,13 @@ test:
 
 about:
   home: "https://github.com/dtkav/swagger_ui_bundle"
-  license: "Apache Version 2.0"
+  license: Apache-2.0
   license_family: "APACHE"
   license_file: "LICENSE"
+  license_url: https://github.com/dtkav/swagger_ui_bundle/blob/master/LICENSE
   summary: "swagger_ui_bundle - swagger-ui files in a pip package"
+  description: |
+    This package contains the static files for swagger-ui as a python package.
 
 extra:
   recipe-maintainers:
