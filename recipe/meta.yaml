@@ -28,6 +28,8 @@ requirements:
 test:
   imports:
     - swagger_ui_bundle
+  commands:
+    - pip check
 
 about:
   home: "https://github.com/dtkav/swagger_ui_bundle"
