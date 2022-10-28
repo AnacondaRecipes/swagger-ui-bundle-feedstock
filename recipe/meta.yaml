@@ -39,6 +39,8 @@ about:
   summary: "swagger_ui_bundle - swagger-ui files in a pip package"
   description: |
     This package contains the static files for swagger-ui as a python package.
+  dev_url: https://github.com/dtkav/swagger_ui_bundle
+  doc_url: https://github.com/dtkav/swagger_ui_bundle/blob/master/README.rst
 
 extra:
   recipe-maintainers:
