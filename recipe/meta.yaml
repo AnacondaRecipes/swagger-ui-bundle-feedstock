@@ -26,6 +26,7 @@ requirements:
     # This is here to workaround an inconsistency with flake8
     # See: https://github.com/conda-forge/flake8-feedstock/issues/52
     - importlib-metadata <4.3  # [py<38]
+    - mccabe >=0.6.0,<0.7.0
   run:
     - jinja2 >=2.0
     - python
