@@ -22,6 +22,7 @@ requirements:
     - flake8
     - pytest-runner
     - wheel
+    - setuptools
   run:
     - jinja2 >=2.0
     - python
