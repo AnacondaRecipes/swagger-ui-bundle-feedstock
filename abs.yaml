@@ -1,2 +1,6 @@
 channels:
   melody_org: swagger-ui-bundle-update
+build_parameters:
+  - "--suppress-variables"
+  - "--error-overlinking"
+  - "--error-overdepending"
