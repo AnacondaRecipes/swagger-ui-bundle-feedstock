@@ -1,18 +1,18 @@
 {% set name = "swagger-ui-bundle" %}
-{% set version = "0.0.6" %}
+{% set version = "0.0.9" %}
 
 package:
-  name: "{{ name|lower }}"
-  version: "{{ version }}"
+  name: {{ name|lower }}
+  version: {{ version }}
 
 source:
-  url: "https://github.com/dtkav/swagger_ui_bundle/archive/v{{ version }}.tar.gz"
-  sha256: "1d49f77f53ac6b25d7413bb9239893bd9eff1e7bb570dc3c57b387a345f3b5cd"
+  url: https://github.com/dtkav/swagger_ui_bundle/archive/refs/tags/v{{ version }}.tar.gz
+  sha256: abebdbb77a7ffa91e46caca35212f5bd39028db9b0a45416b51215c5e7a1b3df
 
 build:
   number: 0
-  script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv "
-  noarch: python
+  skip: true  # [py<37]
+  script: {{ PYTHON }} -m pip install . --no-deps --ignore-installed -v
 
 requirements:
   host:
@@ -21,6 +21,12 @@ requirements:
     - python
     - flake8
     - pytest-runner
+    - wheel
+    - setuptools
+    # This is here to workaround an inconsistency with flake8
+    # See: https://github.com/conda-forge/flake8-feedstock/issues/52
+    - importlib-metadata <4.3  # [py<38]
+    - mccabe >=0.6.0,<0.7.0
   run:
     - jinja2 >=2.0
     - python
@@ -28,13 +34,22 @@ requirements:
 test:
   imports:
     - swagger_ui_bundle
+  requires:
+    - pip
+  commands:
+    - pip check
 
 about:
-  home: "https://github.com/dtkav/swagger_ui_bundle"
-  license: "Apache Version 2.0"
-  license_family: "APACHE"
-  license_file: "LICENSE"
-  summary: "swagger_ui_bundle - swagger-ui files in a pip package"
+  home: https://github.com/dtkav/swagger_ui_bundle
+  license: Apache-2.0
+  license_family: APACHE
+  license_file: LICENSE
+  license_url: https://github.com/dtkav/swagger_ui_bundle/blob/master/LICENSE
+  summary: swagger_ui_bundle - swagger-ui files in a pip package
+  description: |
+    This package contains the static files for swagger-ui as a python package.
+  dev_url: https://github.com/dtkav/swagger_ui_bundle
+  doc_url: https://github.com/dtkav/swagger_ui_bundle/blob/master/README.rst
 
 extra:
   recipe-maintainers:
