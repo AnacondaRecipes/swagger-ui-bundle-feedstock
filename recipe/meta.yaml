@@ -1,35 +1,28 @@
 {% set name = "swagger-ui-bundle" %}
-{% set version = "0.0.9" %}
+{% set version = "1.1.0" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://github.com/dtkav/swagger_ui_bundle/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: abebdbb77a7ffa91e46caca35212f5bd39028db9b0a45416b51215c5e7a1b3df
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/swagger_ui_bundle-{{ version }}.tar.gz
+  sha256: 20673c3431c8733d5d1615ecf79d9acf30cff75202acaf21a7d9c7f489714529
 
 build:
   number: 0
   skip: true  # [py<37]
-  script: {{ PYTHON }} -m pip install . --no-deps --ignore-installed -v
+  script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation --ignore-installed --no-cache-dir -vv
 
 requirements:
   host:
-    - jinja2 >=2.0
+    - python
     - pip
-    - python
-    - flake8
-    - pytest-runner
-    - wheel
-    - setuptools
-    # This is here to workaround an inconsistency with flake8
-    # See: https://github.com/conda-forge/flake8-feedstock/issues/52
-    - importlib-metadata <4.3  # [py<38]
-    - mccabe >=0.6.0,<0.7.0
+    - poetry-core >=1.2.0
   run:
-    - jinja2 >=2.0
     - python
+    - jinja2 >=3.0.0,<4.0.0
+    - importlib_resources >=5.7.1,<6.0.0 # [py<39]
 
 test:
   imports:
@@ -44,7 +37,6 @@ about:
   license: Apache-2.0
   license_family: APACHE
   license_file: LICENSE
-  license_url: https://github.com/dtkav/swagger_ui_bundle/blob/master/LICENSE
   summary: swagger_ui_bundle - swagger-ui files in a pip package
   description: |
     This package contains the static files for swagger-ui as a python package.
